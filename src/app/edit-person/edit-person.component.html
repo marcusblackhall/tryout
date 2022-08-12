@@ -1,0 +1,35 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="emailHelp">
+    <span class="help-block" *ngIf="!editForm.get('name')?.valid &&
+    editForm.get('name')?.errors?.['required'] &&
+    editForm.get('name')?.touched">
+      Name is required
+
+    </span>
+  </div>
+  <div class="mb-3">
+    <label for="age" class="form-label">Age</label>
+    <input type="number" formControlName="age" class="form-control" id="age">
+  </div>
+
+  <div class="row">
+
+  <div class="col">
+    <label for="imageUrl" class="form-label">Image url</label>
+    <input type="text" formControlName="imageUrl"
+     #imgPerson class="form-control"
+      id="imageUrl">
+  </div>
+  <div class="col">
+
+    <img  [src]="imgPerson.value" class="img-thumbnail rounded float-end" />
+
+  </div>
+  </div>
+
+  <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">
+    {{btnText}}
+  </button>
+</form>

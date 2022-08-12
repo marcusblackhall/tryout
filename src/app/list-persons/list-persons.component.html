@@ -1,0 +1,32 @@
+
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+    [@fadeSlideInOut]="stateLeave"
+    *ngFor="let person of persons; let idx = index">
+      <td><a [routerLink]="['/editPerson/',person.id]">{{person.id}}</a></td>
+      <td>{{person.name}}</td>
+      <td>{{person.age}}</td>
+      <td> <fa-icon
+        style="cursor:pointer"
+        (click)="deletePerson(idx,person.id)" [icon]="trashCan" [styles]="{'stroke':'red','color':'red'}"></fa-icon></td>
+    </tr>
+
+  </tbody>
+</table>
+<div style="margin-top:10px">
+
+<button class="btn btn-success" type="button"
+  routerLink="/addPerson"
+>Add Person</button>
+</div>
+
